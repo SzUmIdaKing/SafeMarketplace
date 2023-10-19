@@ -12,7 +12,7 @@ class LoginForm(AuthenticationForm):
         'placeholder': 'Your password',
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
-
+#main
 #kdoskfodskofksdplfplsdsdf
 class SignupForm(UserCreationForm):
     class Meta:
