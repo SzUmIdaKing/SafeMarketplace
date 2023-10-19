@@ -13,7 +13,7 @@ class LoginForm(AuthenticationForm):
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
 
-
+#kdoskfodskofksdplfplsdsdf
 class SignupForm(UserCreationForm):
     class Meta:
         model = User
