@@ -12,8 +12,8 @@ class LoginForm(AuthenticationForm):
         'placeholder': 'Your password',
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
-
-
+#main
+#main
 class SignupForm(UserCreationForm):
     class Meta:
         model = User
