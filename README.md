@@ -7,7 +7,15 @@ poetry install
 poetry shell
 ```
 
-2. Run the Web App:
+2. Only before firs run:
+
+```bash
+cd puddle/
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+   
+4. Run the Web App:
 
 ```bash
 cd puddle/
