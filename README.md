@@ -1,27 +1,13 @@
 # SafeMarketplace
-### Installation process 
-1. Install the required dependencies using Poetry:
+### Run the Web App
+1. If you run app first time:
 
 ```bash
-poetry install
-poetry shell
+docker compose build
 ```
-<!--
-2. Only before firs run:
- To jest komentarz 
-
+2. Run app
 ```bash
-cd puddle/
-python3 manage.py makemigrations
-python3 manage.py migrate
-```
--->
-   
-2. Run the Web App:
-
-```bash
-cd puddle/
-python3 manage.py runserver
+docker compose up
 ```
 
 ### Way of work
