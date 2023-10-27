@@ -1,16 +1,44 @@
 # SafeMarketplace
-### Run the Web App
-1. If you run app first time:
+
+## Run the Web App
+
+### Deploy app in dev mode without nginx and wsgi
+
+1. Bulid app before first run:
 
 ```bash
-docker compose build
+sudo docker compose -f docker-compose.yml build
 ```
 2. Run app
 ```bash
-docker compose up
+sudo docker compose -f docker-compose.yml up
+```
+3. Add permission for accessing local media by app
+```bash
+sudo chmod -R a+rwx ./data
+```
+4. Turn off app
+```bash
+sudo docker compose -f docker-compose.yml down --volumes
 ```
 
-### Way of work
+### Deploy full app in production mode
+
+1. Bulid app before first run:
+```bash
+sudo docker compose -f docker-compose-deploy.yml build
+```
+2. Run app
+```bash
+sudo docker compose -f docker-compose-deploy.yml up
+```
+4. Turn off app
+```bash
+sudo docker compose -f docker-compose-deploy.yml down --volumes
+```
+
+## Way of work
+
 1. Work allways on your branch
 
 ```bash
