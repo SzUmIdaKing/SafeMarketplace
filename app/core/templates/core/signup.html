@@ -29,6 +29,8 @@
             {{ form.password2 }}
         </div>
 
+        <div id="password-strength-meter"></div> <!-- Dodaj pole na wyświetlenie wyniku pomiaru siły hasła -->
+
         {% if form.errors or form.non_field_errors %}
             <div class="mb-3 p-6 bg-red-100 rounded-xl">
                 {% for field in form %}
@@ -39,7 +41,20 @@
             </div>
         {% endif %}
 
-        <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Submit</button>
+        <button class="py-4 px-8 text-lg bg-teal-500 hover-bg-teal-700 rounded-xl text-white">Submit</button>
     </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+<script>
+$(document).ready(function() {
+    $('#id_password1').on('input', function() {
+        var password = $(this).val();
+        var result = zxcvbn(password);
+        var strengthMeter = $('#password-strength-meter');
+        strengthMeter.text('Strength: ' + result.score + '/4');
+        // Możesz dostosować wygląd siłomierza w zależności od wyniku.
+    });
+});
+</script>
 {% endblock %}

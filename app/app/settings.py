@@ -106,12 +106,27 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 12,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {
+        'NAME': 'app.validators.MaxLengthValidator',
+        'OPTIONS': {
+            'max_length': 128,  # Maksymalna długość hasła
+        },
+    },
+    {
+        'NAME': 'myapp.validators.NoTruncationValidator',
+    },
+    {
+        'NAME': 'myapp.validators.UnicodeCharacterValidator',
     },
 ]
 
