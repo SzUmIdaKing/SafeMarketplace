@@ -123,10 +123,10 @@ AUTH_PASSWORD_VALIDATORS = [
         },
     },
     {
-        'NAME': 'myapp.validators.NoTruncationValidator',
+        'NAME': 'app.validators.NoTruncationValidator',
     },
     {
-        'NAME': 'myapp.validators.UnicodeCharacterValidator',
+        'NAME': 'app.validators.UnicodeCharacterValidator',
     },
 ]
 

@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
+
+
+
 from item.models import Item
 
 from .forms import ConversationMessageForm
@@ -51,7 +54,6 @@ def inbox(request):
 @login_required
 def detail(request, pk):
     conversation = Conversation.objects.filter(members__in=[request.user.id]).get(pk=pk)
-
     if request.method == 'POST':
         form = ConversationMessageForm(request.POST)
 
@@ -71,3 +73,4 @@ def detail(request, pk):
         'conversation': conversation,
         'form': form
     })
+
