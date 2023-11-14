@@ -16,6 +16,4 @@ RUN mkdir -p /vol/static && \
 VOLUME /vol/static
 VOLUME /vol/www
 
-USER nginx
-
 CMD ["/run.sh"]
