@@ -4,7 +4,10 @@ from django.contrib.auth.models import User
 import zxcvbn
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django import forms
+from django import forms
 
+    
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Your username',

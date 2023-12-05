@@ -3,8 +3,19 @@ from django.contrib.auth import logout
 from django.contrib import messages
 
 from item.models import Category, Item
-
 from .forms import SignupForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django import forms
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
+
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'custom_password_change.html'  # Twój własny plik szablonu
+    success_url = reverse_lazy('success_url')  # Możesz ustawić URL przekierowania po pomyślnym zmienieniu hasła
+
 
 def index(request):
     items = Item.objects.filter(is_sold=False)[0:6]
