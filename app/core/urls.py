@@ -2,7 +2,6 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.contrib.auth.views import PasswordChangeView
 
-
 from . import views
 from .forms import LoginForm
 

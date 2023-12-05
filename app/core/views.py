@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from django.contrib import messages
-
+from django.contrib.auth import views as auth_views
+from .forms import CustomPasswordChangeForm
 from item.models import Category, Item
 from .forms import SignupForm
 from django.contrib.auth.decorators import login_required
@@ -48,3 +47,6 @@ def logout_user(request):
     logout(request)
     messages.success(request, ("You Were Logged Out."))
     return redirect('/')
+
+def custom_password_reset(request):
+    return auth_views.PasswordChangeView.as_view(form_class=CustomPasswordChangeForm)(request)

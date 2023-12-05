@@ -1,13 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-import zxcvbn
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django import forms
-from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
 
-    
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Your username',
@@ -41,20 +39,18 @@ class SignupForm(UserCreationForm):
         'class': 'w-full py-4 px-6 rounded-xl'
     }))
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            password = form.cleaned_data['password1']
-            result = zxcvbn(password)
+class CustomPasswordChangeForm(PasswordChangeForm):
+    new_password2 = forms.CharField(
+        label="New Password (again)",
+        widget=forms.PasswordInput,
+    )
 
-            if result['score'] < 3:
-                raise forms.ValidationError("Password is too weak. You need a stronger password.")
-            else:
-                user = form.save()
-                login(request, user)
-                return redirect('success_page')  # Przekieruj na stronę po udanej rejestracji
-    else:
-        form = SignupForm()
+    def clean_new_password2(self):
+        new_password1 = self.cleaned_data.get('new_password1')
+        new_password2 = self.cleaned_data.get('new_password2')
 
-    return render(request, 'signup.html', {'form': form})
+        if new_password1 != new_password2:
+            raise forms.ValidationError("New passwords do not match.")
+        
+        return new_password2
+
