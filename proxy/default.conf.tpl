@@ -11,11 +11,9 @@ server {
     ssl_session_cache           shared:SSL:10m;
     ssl_session_timeout         10m;
 
-    add_header X-Content-Type-Options nosniff;
-    add_header X-Frame-Options SAMEORIGIN;
-    add_header X-XSS-Protection "1; mode=block";
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.tailwindcss.com/ 'unsafe-inline'; style-src 'self' 'unsafe-inline';";
-
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-XSS-Protection "1; mode=block" always;
 
     location /static {
         alias /vol/static;
