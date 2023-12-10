@@ -14,6 +14,8 @@ server {
     add_header X-Content-Type-Options nosniff;
     add_header X-Frame-Options SAMEORIGIN;
     add_header X-XSS-Protection "1; mode=block";
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.tailwindcss.com/ 'unsafe-inline'; style-src 'self' 'unsafe-inline';";
+
 
     location /static {
         alias /vol/static;
