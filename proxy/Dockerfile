@@ -6,7 +6,6 @@ COPY ./run.sh /run.sh
 COPY ./nginx.crt /etc/nginx/nginx.crt
 COPY ./nginx.key /etc/nginx/nginx.key
 
-ENV LISTEN_PORT=443
 ENV APP_HOST=app
 ENV APP_PORT=9000
 
